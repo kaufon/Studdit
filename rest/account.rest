@@ -1,0 +1,14 @@
+
+@BASEURL = http://localhost:3333
+
+# @name create_account
+POST {{BASEURL}}/accounts
+Content-Type: application/json
+
+{
+  "name": "newuser",
+  "password": "securepassword",
+  "email": "email@com.br"
+}
+
+# @name autheticate
