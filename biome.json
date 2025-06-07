@@ -4,7 +4,11 @@
       "unsafeParameterDecoratorsEnabled": true
     }
   },
+  "organizeImports":{
+    "enabled": true
+  },
   "linter": {
+    "enabled":true,
     "rules": {
       "style": {
         "useImportType": "off"

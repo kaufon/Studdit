@@ -1,0 +1,9 @@
+@BASE_URL = "http://localhost:3333"
+
+POST {{BASE_URL}}/sessions
+Content-Type: application/json
+
+{
+  "email": "email@com.br",
+  "password": "securepassword"
+}
