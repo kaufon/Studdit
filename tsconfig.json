@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "NodeNext",
     "declaration": true,
-    "useDefineForClassFields": false,    
+    "useDefineForClassFields": false,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,6 +17,14 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "types": [
+      "vitest/globals"
+    ]
   }
 }

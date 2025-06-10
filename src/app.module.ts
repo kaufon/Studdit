@@ -3,9 +3,10 @@ import { PrismaService } from "./prisma/prisma.service";
 import { CreateAccountController } from "./controllers/create-account.controller";
 import { ConfigModule } from "@nestjs/config";
 import { envSchema } from "./env";
-import { AuthenticateAccountController } from "./controllers/authenticate-account.controller";
+import { AuthenticateController } from "./controllers/authenticate.controller";
 import { AuthModule } from "./auth/auth.module";
 import { CreateQuestionController } from "./controllers/create-question.controller";
+import { ListQuestionsController } from "./controllers/list-recent-questions.controller";
 
 @Module({
 	imports: [
@@ -13,9 +14,14 @@ import { CreateQuestionController } from "./controllers/create-question.controll
 			validate: (env) => envSchema.parse(env),
 			isGlobal: true,
 		}),
-    AuthModule
+		AuthModule,
 	],
-	controllers: [CreateAccountController, AuthenticateAccountController,CreateQuestionController],
+	controllers: [
+		CreateAccountController,
+		AuthenticateController,
+		CreateQuestionController,
+		ListQuestionsController,
+	],
 	providers: [PrismaService],
 })
 export class AppModule {}

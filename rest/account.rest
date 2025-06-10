@@ -1,6 +1,5 @@
-
 @BASEURL = http://localhost:3333
-
+@auth_token = {{autheticate.response.body.acess_token}}
 # @name create_account
 POST {{BASEURL}}/accounts
 Content-Type: application/json
@@ -11,4 +10,29 @@ Content-Type: application/json
   "email": "email@com.br"
 }
 
+###
 # @name autheticate
+POST {{BASEURL}}/sessions
+Content-Type: application/json
+
+{
+  "email": "email@com.br",
+  "password": "securepassword"
+}
+
+### 
+# @name create_question
+POST {{BASEURL}}/questions
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "title": "What is the  of life?",
+  "content": "I am looking for a philosophical explanation."
+}
+
+###
+# @name list_questions
+GET {{BASEURL}}/questions
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}

@@ -17,7 +17,7 @@ export const authenticateBodySchema = z.object({
 });
 export type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>;
 @Controller("/sessions")
-export class AuthenticateAccountController {
+export class AuthenticateController {
 	constructor(
 		private jwt: JwtService,
 		private prisma: PrismaService,
