@@ -19,14 +19,17 @@ export class CreateQuestionController {
 	constructor(private prisma: PrismaService) {}
 
 	private generateSlug(title: string): string {
-		return title
-			.normalize("NFD")
-			.replace(/[\u0300-\u036f]/g, "")
-			.toLowerCase()
-			.replace(/[^a-z0-9\s-]/g, "")
-			.trim()
-			.replace(/\s+/g, "-")
-			.replace(/-+/g, "-");
+		return (
+			title
+				.normalize("NFD")
+				// biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
+				.replace(/[\u0300-\u036f]/g, "")
+				.toLowerCase()
+				.replace(/[^a-z0-9\s-]/g, "")
+				.trim()
+				.replace(/\s+/g, "-")
+				.replace(/-+/g, "-")
+		);
 	}
 
 	@Post()
