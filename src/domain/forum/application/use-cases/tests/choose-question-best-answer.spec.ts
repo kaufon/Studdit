@@ -15,7 +15,8 @@ describe("Answer question", () => {
 	let sut: ChooseQuestionBestAnswerUseCase;
 	beforeEach(() => {
 		inMemoryAnswersRepository = new InMemoryAnswersRepository();
-    inMemoryQuestionAttachmentsRepository = new InMemoryQuestionAttachmentsRepository();
+		inMemoryQuestionAttachmentsRepository =
+			new InMemoryQuestionAttachmentsRepository();
 		inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
 			inMemoryQuestionAttachmentsRepository,
 		);

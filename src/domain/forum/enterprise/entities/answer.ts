@@ -66,10 +66,10 @@ export class Answer extends AggregateRoot<AnswerProps> {
 			},
 			id,
 		);
-    const isNewAnswer = !id
-    if(isNewAnswer) {
-      answer.addDomainEvent(new AnswerCreatedEvent(answer));
-    }
+		const isNewAnswer = !id;
+		if (isNewAnswer) {
+			answer.addDomainEvent(new AnswerCreatedEvent(answer));
+		}
 		return answer;
 	}
 }

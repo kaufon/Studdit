@@ -9,7 +9,7 @@ interface AnswerQuestionUseCaseRequest {
 	questionId: string;
 	instructorId: string;
 	content: string;
-  attchmentsIds: string[];
+	attchmentsIds: string[];
 }
 type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer }>;
 
@@ -19,7 +19,7 @@ export class AnswerQuestionUseCase {
 		questionId,
 		instructorId,
 		content,
-    attchmentsIds,
+		attchmentsIds,
 	}: AnswerQuestionUseCaseRequest): Promise<AnswerQuestionUseCaseResponse> {
 		const answer = Answer.create({
 			content,
@@ -32,7 +32,7 @@ export class AnswerQuestionUseCase {
 				answerId: answer.id,
 			});
 		});
-    answer.attachments = new AnswerAttachmentList(answerAttachments);
+		answer.attachments = new AnswerAttachmentList(answerAttachments);
 
 		await this.answerRepository.create(answer);
 		return right({ answer });

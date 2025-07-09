@@ -11,7 +11,7 @@ import { EnvModule } from "../env/env.module";
 	imports: [
 		PassportModule,
 		JwtModule.registerAsync({
-      imports: [EnvModule],
+			imports: [EnvModule],
 			inject: [EnvService],
 			global: true,
 			useFactory(env: EnvService) {
@@ -26,7 +26,7 @@ import { EnvModule } from "../env/env.module";
 		}),
 	],
 	providers: [
-    EnvService,
+		EnvService,
 		JwtStrategy,
 		{
 			provide: APP_GUARD,

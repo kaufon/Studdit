@@ -18,11 +18,13 @@ describe("Regist student", () => {
 			password: "123456",
 		});
 		expect(result.isRight()).toBe(true);
-    expect(result.value).toEqual({
-      student: inMemoryStudentsRepository.items[0],
-    })
+		expect(result.value).toEqual({
+			student: inMemoryStudentsRepository.items[0],
+		});
 		expect(inMemoryStudentsRepository.items[0].name).toEqual("John Doe");
-    const hashedPassword = await fakeHasher.hash("123456");
-    expect(inMemoryStudentsRepository.items[0].password).toEqual(hashedPassword);
+		const hashedPassword = await fakeHasher.hash("123456");
+		expect(inMemoryStudentsRepository.items[0].password).toEqual(
+			hashedPassword,
+		);
 	});
 });

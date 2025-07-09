@@ -1,5 +1,5 @@
 import { AppModule } from "../../../app.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service"; 
+import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import request from "supertest";
@@ -26,6 +26,6 @@ describe("create account e2e", () => {
 		const userOnDatabase = await prisma.user.findUnique({
 			where: { email: "johndoe@example.com" },
 		});
-    expect(userOnDatabase).toBeTruthy()
+		expect(userOnDatabase).toBeTruthy();
 	});
 });

@@ -25,10 +25,10 @@ export class ListQuestionsController {
 		const result = await this.listQuestionsUseCase.execute({
 			page: page,
 		});
-    if(result.isLeft()) {
-      throw new Error()
-    }
-    const questions = result.value.questions;
-    return {questions: questions.map(QuestionPresenter.toHTTP)}
+		if (result.isLeft()) {
+			throw new Error();
+		}
+		const questions = result.value.questions;
+		return { questions: questions.map(QuestionPresenter.toHTTP) };
 	}
 }

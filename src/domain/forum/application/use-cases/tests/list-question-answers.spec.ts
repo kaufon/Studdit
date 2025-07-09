@@ -31,20 +31,20 @@ describe("List  questions answers", () => {
 			questionId: "question-1",
 			page: 1,
 		});
-    expect(value?.answers).toHaveLength(3);
+		expect(value?.answers).toHaveLength(3);
 	});
 	it("test pagination on questions", async () => {
 		for (let i = 0; i < 22; i++) {
 			await inMemoryAnswersRepository.create(
 				makeAnswer({
-          questionId: new UniqueEntityId("question-1"),
-        }),
+					questionId: new UniqueEntityId("question-1"),
+				}),
 			);
 		}
 		const { value } = await sut.execute({
-      questionId: "question-1",
+			questionId: "question-1",
 			page: 2,
 		});
-	   expect(value?.answers).toHaveLength(2);
+		expect(value?.answers).toHaveLength(2);
 	});
 });

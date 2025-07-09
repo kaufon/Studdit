@@ -26,7 +26,7 @@ export class InMemoryAnswersRepository implements AnswerRepository {
 			(item) => item.id.toString() === answer.id.toString(),
 		);
 		this.items[answerIndex] = answer;
-    DomainEvents.dispatchEventsForAggregate(answer.id);
+		DomainEvents.dispatchEventsForAggregate(answer.id);
 	}
 	async findManyByQuestionId(
 		questionId: string,

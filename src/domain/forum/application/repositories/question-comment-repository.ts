@@ -3,7 +3,10 @@ import type { QuestionComment } from "../../enterprise/entities/question-comment
 
 export interface QuestionsCommentRepository {
 	findById(id: string): Promise<QuestionComment | null>;
-	findManyByQuestionId(questionId: string,params: PaginationParams): Promise<QuestionComment[]>;
+	findManyByQuestionId(
+		questionId: string,
+		params: PaginationParams,
+	): Promise<QuestionComment[]>;
 	create(questionComment: QuestionComment): Promise<void>;
 	delete(question: QuestionComment): Promise<void>;
 }

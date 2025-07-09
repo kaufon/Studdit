@@ -26,12 +26,12 @@ class CustomAggregate extends AggregateRoot<null> {
 }
 describe("domain envet", () => {
 	it("should be able to dispatch and listen to domain events", () => {
-    const callbackSpy = vi.fn()
+		const callbackSpy = vi.fn();
 		DomainEvents.register(callbackSpy, CustomAggregateCreated.name);
 		const aggregate = CustomAggregate.create();
-    expect(aggregate.domainEvents).toHaveLength(1);
-    DomainEvents.dispatchEventsForAggregate(aggregate.id)
-    expect(callbackSpy).toHaveBeenCalledTimes(1);
-    expect(aggregate.domainEvents).toHaveLength(0);
+		expect(aggregate.domainEvents).toHaveLength(1);
+		DomainEvents.dispatchEventsForAggregate(aggregate.id);
+		expect(callbackSpy).toHaveBeenCalledTimes(1);
+		expect(aggregate.domainEvents).toHaveLength(0);
 	});
 });

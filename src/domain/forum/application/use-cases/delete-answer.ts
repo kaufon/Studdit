@@ -8,7 +8,7 @@ interface DeleteAnswerUseCaseRequest {
 	id: string;
 	authorId: string;
 }
-type DeleteAnswerUseCaseResponse = Either<UseCaseError,{}>;
+type DeleteAnswerUseCaseResponse = Either<UseCaseError, {}>;
 export class DeleteAnswerUseCase {
 	constructor(private answersRepository: AnswerRepository) {}
 	async execute({

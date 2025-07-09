@@ -14,8 +14,6 @@ import { Encrypter } from "@/domain/forum/application/cryptography/encrypter";
 import { CryptographyModule } from "../cryptography/cryptography.module";
 import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student";
 import { HashGenerator } from "@/domain/forum/application/cryptography/hash-generator";
-import { APP_GUARD } from "@nestjs/core";
-import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Module({
 	imports: [DatabaseModule, CryptographyModule],

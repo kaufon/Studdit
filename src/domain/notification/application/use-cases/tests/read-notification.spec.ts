@@ -24,19 +24,21 @@ describe("Create question", () => {
 			notificationId: notification.id.toString(),
 		});
 		expect(result.isRight()).toBeTruthy();
-		expect(inMemoryNotificationsRepository.items[0].readAt).toEqual(expect.any(Date));
+		expect(inMemoryNotificationsRepository.items[0].readAt).toEqual(
+			expect.any(Date),
+		);
 	});
-  it("should not be able to read a notification that does not exist", async () => {
-    const notification = makeNotification({
-      title: "1",
-      recipientId: new UniqueEntityId("1"),
-    });
-    await inMemoryNotificationsRepository.create(notification);
-    const result = await sut.execute({
-      recipientId: "2",
-      notificationId: notification.id.toString(),
-    });
-    expect(result.isLeft()).toBeTruthy();
-    expect(result.value).toBeInstanceOf(NotAllowedError)
-  })
+	it("should not be able to read a notification that does not exist", async () => {
+		const notification = makeNotification({
+			title: "1",
+			recipientId: new UniqueEntityId("1"),
+		});
+		await inMemoryNotificationsRepository.create(notification);
+		const result = await sut.execute({
+			recipientId: "2",
+			notificationId: notification.id.toString(),
+		});
+		expect(result.isLeft()).toBeTruthy();
+		expect(result.value).toBeInstanceOf(NotAllowedError);
+	});
 });

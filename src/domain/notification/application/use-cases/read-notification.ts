@@ -27,7 +27,7 @@ export class ReadNotificationUseCase {
 		if (notification.recipientId.toString() !== recipientId) {
 			return left(new NotAllowedError());
 		}
-		notification.markAsRead()
+		notification.markAsRead();
 		return right({
 			notification,
 		});

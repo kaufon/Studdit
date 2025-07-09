@@ -8,7 +8,7 @@ describe("comment on question", () => {
 	let inMemoryAnswerRepository: InMemoryAnswersRepository;
 	let sut: CommentOnAnswerUseCase;
 	beforeEach(() => {
-		inMemoryAnswerRepository   = new InMemoryAnswersRepository();
+		inMemoryAnswerRepository = new InMemoryAnswersRepository();
 		inMememoryAnswerCommentRepository = new InMemoryAnswerCommentRepository();
 		sut = new CommentOnAnswerUseCase(
 			inMemoryAnswerRepository,
@@ -17,13 +17,15 @@ describe("comment on question", () => {
 	});
 
 	it("it should be able to comment on question", async () => {
-		const answer = makeAnswer()
+		const answer = makeAnswer();
 		await inMemoryAnswerRepository.create(answer);
 		await sut.execute({
 			answerId: answer.id.toString(),
 			authorId: answer.authorId.toString(),
 			content: "new comment",
 		});
-    expect(inMememoryAnswerCommentRepository.items[0].content).toEqual("new comment");
+		expect(inMememoryAnswerCommentRepository.items[0].content).toEqual(
+			"new comment",
+		);
 	});
 });

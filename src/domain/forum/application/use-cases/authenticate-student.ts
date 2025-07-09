@@ -34,9 +34,11 @@ export class AuthenticateStudentUseCase {
 		if (!isPasswordValid) {
 			return left(new WrongCredentialsError());
 		}
-		const acessToken = await this.encrypter.encrypt({ sub: student.id.toString() });
+		const acessToken = await this.encrypter.encrypt({
+			sub: student.id.toString(),
+		});
 		return right({
-      acessToken: acessToken,
+			acessToken: acessToken,
 		});
 	}
 }

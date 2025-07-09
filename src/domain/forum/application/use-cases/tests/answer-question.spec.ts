@@ -16,17 +16,17 @@ describe("Answer question", () => {
 			questionId: "1",
 			instructorId: "1",
 			content: "Resposta maneira",
-      attchmentsIds: ["1", "2"],
+			attchmentsIds: ["1", "2"],
 		});
 		expect(answer).toBeTruthy();
 		expect(inMemoryAnswersRepository.items[0].id).toEqual(
 			answer.value?.answer.id,
 		);
-		expect(
-			inMemoryAnswersRepository.items[0].attachments.currentItems,
-		).toEqual([
-			expect.objectContaining({ attachmentId: new UniqueEntityId("1") }),
-			expect.objectContaining({ attachmentId: new UniqueEntityId("2") }),
-		]);
+		expect(inMemoryAnswersRepository.items[0].attachments.currentItems).toEqual(
+			[
+				expect.objectContaining({ attachmentId: new UniqueEntityId("1") }),
+				expect.objectContaining({ attachmentId: new UniqueEntityId("2") }),
+			],
+		);
 	});
 });

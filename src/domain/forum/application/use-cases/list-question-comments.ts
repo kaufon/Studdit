@@ -6,9 +6,12 @@ interface ListQuestionAnswersUseCaseRequest {
 	page: number;
 	questionId: string;
 }
-type ListQuestionAnswersUseCaseResponse = Either<null, {
-	questionComments: QuestionComment[];
-}>
+type ListQuestionAnswersUseCaseResponse = Either<
+	null,
+	{
+		questionComments: QuestionComment[];
+	}
+>;
 export class ListQuestionCommentsUseCase {
 	constructor(private questionCommentsRepository: QuestionsCommentRepository) {}
 	async execute({

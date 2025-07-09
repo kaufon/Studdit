@@ -1,5 +1,5 @@
 import { AppModule } from "../../../app.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service"; 
+import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import { hash } from "bcryptjs";
@@ -30,8 +30,8 @@ describe("create account e2e", () => {
 			password: "password123",
 		});
 		expect(response.statusCode).toBe(201);
-    expect(response.body).toEqual({
-      acess_token: expect.any(String),
-    })
+		expect(response.body).toEqual({
+			acess_token: expect.any(String),
+		});
 	});
 });
