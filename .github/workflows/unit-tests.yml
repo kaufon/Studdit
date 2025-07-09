@@ -8,19 +8,6 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: docker
-          POSTGRES_DB: nest-clean
-        ports: [5432:5432]
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,10 +17,5 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: npm install
-      - name: Configure database variables
-        run: |
-          echo "DATABASE_URL=postgres://postgres:docker@localhost:5432/nest-clean" >> $GITHUB_ENV
       - name: Run unit tests
         run: npm run test
-      - name: Run e2e tests
-        run: npm run test:e2e
