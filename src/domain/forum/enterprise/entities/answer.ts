@@ -9,7 +9,7 @@ export type AnswerProps = {
 	questionId: UniqueEntityId;
 	authorId: UniqueEntityId;
 	createdAt: Date;
-	updatedAt?: Date;
+	updatedAt?: Date | null;
 	attachments: AnswerAttachmentList;
 };
 
@@ -30,7 +30,7 @@ export class Answer extends AggregateRoot<AnswerProps> {
 		return this.props.createdAt;
 	}
 
-	get updatedAt(): Date | undefined {
+	get updatedAt(): Date | undefined | null {
 		return this.props.updatedAt;
 	}
 	get attachments(): AnswerAttachmentList {

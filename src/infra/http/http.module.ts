@@ -14,6 +14,8 @@ import { Encrypter } from "@/domain/forum/application/cryptography/encrypter";
 import { CryptographyModule } from "../cryptography/cryptography.module";
 import { RegisterStudentUseCase } from "@/domain/forum/application/use-cases/register-student";
 import { HashGenerator } from "@/domain/forum/application/cryptography/hash-generator";
+import { GetQuestionBySlugUseCase } from "@/domain/forum/application/use-cases/get-question-by-slug";
+import { GetQuestionBySlugController } from "@/infra/http/controllers/get-question-by-slug.controller";
 
 @Module({
 	imports: [DatabaseModule, CryptographyModule],
@@ -22,6 +24,7 @@ import { HashGenerator } from "@/domain/forum/application/cryptography/hash-gene
 		AuthenticateController,
 		ListQuestionsController,
 		CreateQuestionController,
+    GetQuestionBySlugController
 	],
 	providers: [
 		{
@@ -44,7 +47,7 @@ import { HashGenerator } from "@/domain/forum/application/cryptography/hash-gene
 				studentsRepository: StudentsRepository,
 				hashComparer: HashComparer,
 				encrypter: Encrypter,
-			) => {
+			): AuthenticateStudentUseCase => {
 				return new AuthenticateStudentUseCase(
 					studentsRepository,
 					hashComparer,
@@ -62,6 +65,13 @@ import { HashGenerator } from "@/domain/forum/application/cryptography/hash-gene
 				return new RegisterStudentUseCase(studentsRepository, hashGenerator);
 			},
 			inject: [StudentsRepository, HashComparer],
+		},
+		{
+			provide: GetQuestionBySlugUseCase,
+			useFactory: (questionsRepository: QuestionsRepository) => {
+				return new GetQuestionBySlugUseCase(questionsRepository);
+			},
+			inject: [QuestionsRepository],
 		},
 	],
 })

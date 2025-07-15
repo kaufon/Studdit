@@ -27,12 +27,18 @@ Content-Type: application/json
 Authorization: Bearer {{auth_token}}
 
 {
-  "title": "What is the dhasklslc banana  of life?",
+  "title": "socrro To Passando joia",
   "content": "I am looking for a philosophical explanation."
 }
 
 ###
 # @name list_questions
 GET {{BASEURL}}/questions
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+### 
+# @name get_question_by_slug
+GET {{BASEURL}}/questions/socrro-to-passando-joia
 Content-Type: application/json
 Authorization: Bearer {{auth_token}}
